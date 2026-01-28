@@ -1,0 +1,16 @@
+# Eclipse
+/.classpath
+/.project
+/.settings/
+
+# Maven
+/target/
+
+# Screenshots & test data
+/screenshot/
+/testdata/
+/test-output/
+
+# OS files
+.DS_Store
+Thumbs.db
