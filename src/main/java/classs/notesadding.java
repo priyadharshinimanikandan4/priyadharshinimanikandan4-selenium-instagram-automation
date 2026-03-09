@@ -23,76 +23,143 @@ public class notesadding {
 
     // ===================== Messages =====================
     public void message() {
-        By msgIcon = By.xpath("//a[.//*[name()='svg' and @aria-label='Messages']]\r\n"
-        		+ "");
+        By messagesIcon = By.xpath("//a[.//*[name()='svg' and @aria-label='Messages']]");
+        By turnOffNotif = By.xpath("//button[text()='Not Now' or text()='Turn Off']"); // adjust based on actual text
+
         for (int i = 0; i < 3; i++) {
             try {
-                WebElement msg = w.until(ExpectedConditions.presenceOfElementLocated(msgIcon));
-                ((JavascriptExecutor) driver)
-                        .executeScript("arguments[0].scrollIntoView({block:'center'});", msg);
-                w.until(ExpectedConditions.elementToBeClickable(msg));
-                msg.click();
+                // Refetch the element each retry
+                WebElement msg = w.until(
+                        ExpectedConditions.elementToBeClickable(messagesIcon)
+                );
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center'});", msg
+                );
+
+                ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].click();", msg
+                );
+
                 System.out.println("'Messages' icon clicked");
+
+                // Handle Turn Off Notifications pop-up if present
+                try {
+                    WebElement notif = new WebDriverWait(driver, Duration.ofSeconds(3))
+                            .until(ExpectedConditions.elementToBeClickable(turnOffNotif));
+                    notif.click();
+                    System.out.println("'Turn off notifications' pop-up dismissed");
+                } catch (TimeoutException e) {
+                    // Pop-up not shown, nothing to do
+                    System.out.println("No notifications pop-up displayed");
+                }
+
                 return;
+                
+
             } catch (StaleElementReferenceException e) {
-                System.out.println("Retrying to click Messages...");
+                System.out.println("Retrying Messages click due to stale element...");
+                try { Thread.sleep(500); } catch (InterruptedException ex) {}
+            } catch (TimeoutException e) {
+                System.out.println("Messages icon not clickable yet, retrying...");
             }
         }
-        throw new RuntimeException("Failed to click Messages due to stale element");
+
+        throw new RuntimeException("Failed to click Messages icon after retries");
     }
 
-    // ===================== 'Your note' icon =====================
-    public void icon() {
-        handleNotNowPopup(); // dismiss any popup first
+    
+   
 
-        By yourNoteBtn = By.xpath("//div[@role='button' and contains(., 'Your note')]");
+      public void icon() {
+    	  By turnOffNotif = By.xpath("//button[text()='Not Now' or text()='Turn Off']"); // adjust based on actual text
 
-        for (int i = 0; i < 3; i++) { // retry 3 times
+        handleNotNowPopup();
+        By messagesIcon = By.xpath("//a[.//*[name()='svg' and @aria-label='Messages']]");
+        handleNotNowPopup();
+        try {
+            WebElement notif = new WebDriverWait(driver, Duration.ofSeconds(3))
+                    .until(ExpectedConditions.elementToBeClickable(turnOffNotif));
+            notif.click();
+            System.out.println("'Turn off notifications' pop-up dismissed");
+        } catch (TimeoutException e) {
+            // Pop-up not shown, nothing to do
+            System.out.println("No notifications pop-up displayed");
+        }
+
+        WebElement msg = w.until(
+                ExpectedConditions.elementToBeClickable(messagesIcon)
+        );
+
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block:'center'});", msg
+        );
+
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].click();", msg
+        );
+
+        System.out.println("'Messages' icon clicked");
+        
+        By yourNote = By.xpath("//span[text()='Your note']");
+
+        for (int i = 0; i < 3; i++) {
             try {
-                WebElement y = w.until(ExpectedConditions.visibilityOfElementLocated(yourNoteBtn));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", y);
-                w.until(ExpectedConditions.elementToBeClickable(y));
+                WebElement noteBtn = w.until(ExpectedConditions.elementToBeClickable(yourNote));
 
-                Actions actions = new Actions(driver);
-                actions.moveToElement(y).click().perform();
+                ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({block:'center'});", noteBtn
+                );
 
-                System.out.println("'Your note' button clicked via Actions");
+                ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].click();", noteBtn
+                );
+
+                System.out.println("'Your note' clicked");
                 return;
-            } catch (StaleElementReferenceException | TimeoutException e) {
-                System.out.println("Retrying to click 'Your note' button...");
+
+            } catch (Exception e) {
+                System.out.println("Retrying to click 'Your note'...");
             }
         }
 
         throw new RuntimeException("Failed to click 'Your note' button after retries");
     }
 
+   public void noteswrit(String content) {
+        By textbox = By.xpath("//div[@contenteditable='true']");
 
-    // ===================== Write note =====================
-    public void noteswrit(String content) {
-        By textbox = By.xpath("(//div[@role='button' and @tabindex='0' and descendant::span[contains(@class,'x1lliihq')]])[2]");
-        WebElement c = null;
-
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) { // increase retries
             try {
-                c = w.until(ExpectedConditions.visibilityOfElementLocated(textbox));
-                ((JavascriptExecutor) driver)
-                        .executeScript("arguments[0].scrollIntoView({block:'center'});", c);
+                  WebElement c = w.until(ExpectedConditions.visibilityOfElementLocated(textbox));
 
-                Actions actions = new Actions(driver);
-                actions.moveToElement(c).click().sendKeys(content).perform();
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", c);
+
+                try {
+                    c.click();
+                } catch (org.openqa.selenium.ElementClickInterceptedException e) {
+                    System.out.println("Click intercepted, trying JS click...");
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", c);
+                }
+
+                  ((JavascriptExecutor) driver).executeScript("arguments[0].innerText='';", c);
+
+                c.sendKeys(content);
 
                 System.out.println("Note written: " + content);
                 return;
             } catch (StaleElementReferenceException | TimeoutException e) {
                 System.out.println("Retrying to write note...");
+                try { Thread.sleep(500); } catch (InterruptedException ex) {}
             }
         }
 
-        throw new RuntimeException("Failed to write note after retries");
+        throw new RuntimeException("Failed to write note after multiple retries");
     }
 
-    // ===================== Click Share button =====================
-    public void sarebtnclick() {
+
+
+      public void sarebtnclick() {
         By shareBtn = By.xpath("//div[@role='button']//span[contains(.,'Share')]");
         WebElement d = w.until(ExpectedConditions.elementToBeClickable(shareBtn));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", d);
@@ -100,11 +167,9 @@ public class notesadding {
       
     }
 
-    // ===================== Leave note =====================
-    public void leavenote() {
-    	// Wait for the "Leave a new note" button to be clickable
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    	  WebElement g = w.until(ExpectedConditions.elementToBeClickable(By.xpath(" //*[@aria-label='Close']")));
+      public void leavenote() {
+     	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+    	  WebElement g = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@aria-label='Close']")));
   		g.click();
 
     	WebElement t = wait.until(ExpectedConditions.elementToBeClickable(
@@ -114,9 +179,7 @@ public class notesadding {
     	WebElement leaveNoteBtn = wait.until(ExpectedConditions.elementToBeClickable(
     	    By.xpath("//div[@role='button' and contains(text(), 'Leave a new note')]")
     	));
-
-    	// Scroll into view (sometimes needed for div buttons)
-    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", leaveNoteBtn);
+	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", leaveNoteBtn);
 
     	// Click the button
     	leaveNoteBtn.click();
@@ -124,12 +187,7 @@ public class notesadding {
     }
 
 
-    // ===================== Verify shared note =====================
-  
-
-
-    // ===================== Handle 'Not Now' popup =====================
-    public void handleNotNowPopup() {
+       public void handleNotNowPopup() {
         WebDriverWait shortWait = new WebDriverWait(driver, Duration.ofSeconds(5));
         try {
             WebElement notNow = shortWait.until(ExpectedConditions.elementToBeClickable(
@@ -138,7 +196,6 @@ public class notesadding {
             notNow.click();
             System.out.println("'Not Now' popup dismissed");
         } catch (TimeoutException e) {
-            // Popup didn't appear, safe to continue
-        }
+                }
     }
 }

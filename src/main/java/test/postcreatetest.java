@@ -29,6 +29,8 @@ postcreation pc;
        
      pc.postdelebtn();
        pc.bacu();     // go back
+       
+       
     }
 
 

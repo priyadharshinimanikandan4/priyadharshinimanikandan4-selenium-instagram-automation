@@ -1,21 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="InstagramAutomationSuite" verbose="1">
-
-    <!-- Logical group of tests -->
-    <test name="InstagramTests">
-        <classes>
-            <!-- Login Test class -->
-            <class name="test.logintest"/>
-            
-            <!-- Search Test class -->
-            <class name="test.searchtest"/>
-            
-            <!-- Profile Test class -->
-            <class name="test.profiletest"/>
-            <class name="test.useraccTest"/>
-            <class name="test.postcreatetest"/>
-        </classes>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="InstagramSuite" verbose="1">
+    <test name="AllTests">
+        <packages>
+            <package name="test"/>
+        </packages>
     </test>
-
 </suite>

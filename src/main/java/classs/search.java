@@ -11,8 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import instagram.instagram.basec;
 
-public class search extends basec{
-	WebDriverWait wait;
+public class search {
+	    private WebDriver driver;
+	      
+
+	   
+	        
+	    
+	private WebDriverWait wait;
 	public search(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -21,16 +27,15 @@ public class search extends basec{
 	
 	public void sear(String in) throws InterruptedException {
 		 WebElement searchIcon = wait.until(
-		            ExpectedConditions.elementToBeClickable(By.xpath("//a[.//*[@aria-label='Search']]"))
+		            ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@aria-label='Search']"))
 		        );
 		        searchIcon.click();
 		 WebElement searchBox = wait.until(
 		            ExpectedConditions.visibilityOfElementLocated(
-		                By.xpath("*//input[@placeholder='Search']") // This is the real input field
+		                By.xpath("//input[@placeholder='Search']") // This is the real input field
 		            )
 		        );
 
-		        searchBox.clear();
 	        searchBox.clear();
 	        searchBox.sendKeys(in);
 	        Thread.sleep(2000);

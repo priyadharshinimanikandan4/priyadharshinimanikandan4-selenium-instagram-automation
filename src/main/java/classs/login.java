@@ -10,12 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import instagram.instagram.basec;
 
-public class login extends basec {
+public class login  {
 
     private WebDriverWait wait;
+    private WebDriver driver;
+      
 
     public login(WebDriver driver) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+        this.driver = driver;
+        
     }
 
     // Dismiss cookie banner if present

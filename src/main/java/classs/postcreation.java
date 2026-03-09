@@ -14,7 +14,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import jdk.javadoc.internal.doclets.toolkit.util.DocFinder.Output;
 
 public class postcreation {
   WebDriver driver;
@@ -26,12 +25,6 @@ public class postcreation {
 	  WebElement a = w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[.//span[text()='Create']]")));
 	  a.click();
   }
-  //public void posbtn() {
-//	  WebElement b = w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Post']")));
-	//  b.click();
- // }
-	//input[@accept='image/avif,image/jpeg,image/png,image/heic,image/heif,video/mp4,video/quicktime']
-	
 	
   public void imgbtn() {
 	  WebElement c = w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@aria-label='Close']")));
@@ -57,7 +50,7 @@ public class postcreation {
 	  h.click();
 	  
 	  System.out.println("before share");
-	//button[text()='Cancel']
+	
 	  try {
 		    WebElement cancelBtn = w.until(
 		        ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[text()='Cancel']"))
@@ -80,9 +73,9 @@ public class postcreation {
   }
   public void postdelebtn() {
 	 
-	  WebElement o = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@href='/priyadharshinimanikandan3_12/p/DUAyFBSjz__/']")));
+	  WebElement o = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@href, '/p/')]")));
 	  o.click();
-	  WebElement i =  w.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@aria-label='More options']")));
+	  WebElement i =  w.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[name()='svg' and contains(@aria-label,'More')]")));
 	  i.click();
 	  WebElement r = w.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Delete']")));
 	  r.click();

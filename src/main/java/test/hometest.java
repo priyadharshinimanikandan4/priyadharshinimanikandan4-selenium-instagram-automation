@@ -10,11 +10,11 @@ public class hometest extends basec{
 	Homepage hp ;
 	
 	@Test(dependsOnGroups={"notesFlow"} , groups={"homeFlow"})
-	public void hime() {
+	public void hime() throws InterruptedException {
 		hp = new Homepage(driver);
-		hp.findhom();
+		hp.findHome();
 		hp.like();
-		hp.Notifictaions();
+		hp.notifications();
 		hp.reels();
 	}
 }

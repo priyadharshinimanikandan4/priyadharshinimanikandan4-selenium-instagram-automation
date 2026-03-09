@@ -19,15 +19,17 @@ public class profiletest extends basec{
 	
 	
 	
-	@Test()
-		    public void validateUsername() {
+	@Test(dependsOnGroups= {"exploreFlow"},groups= {"proFlow"})
+		    public void validateUsername() throws InterruptedException {
 		p = new profilepage(driver) ;
+		p.search("priya_dharshini_manikandan");
+		
 		        p.username();
 		  
 		        p.flwbtn(); // You can remove the parameter in your class if unused
 		  
-		        p.msgicon();
-		   
+		       p.msgicon();
+		   p.senmsg("hii");
 		        p.postvalidate();
 		   
 		        p.findSuggestion();
