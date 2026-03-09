@@ -11,10 +11,7 @@ import instagram.instagram.datapo;
 public class logintest extends basec {
 
 	
-	
-			
 
-	
 
 	@Test(groups = {"loginFlow"},dataProvider = "login",dataProviderClass = datapo.class)
 	public void logintes(String Username,String password) {
