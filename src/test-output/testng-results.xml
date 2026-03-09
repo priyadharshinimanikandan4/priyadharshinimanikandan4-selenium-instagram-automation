@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-02-24T07:29:06 IST" name="Default suite" finished-at="2026-02-24T07:31:41 IST" duration-ms="154717">
+    <groups>
+      <group name="settFlow">
+        <method signature="settingstest.set()[pri:0, instance:test.settingstest@6200f9cb]" name="set" class="test.settingstest"/>
+      </group> <!-- settFlow -->
+      <group name="exploreFlow">
+        <method signature="exploretest.explo()[pri:0, instance:test.exploretest@20d525]" name="explo" class="test.exploretest"/>
+      </group> <!-- exploreFlow -->
+      <group name="notesFlow">
+        <method signature="notesaddingtest.notesadd()[pri:0, instance:test.notesaddingtest@69453e37]" name="notesadd" class="test.notesaddingtest"/>
+      </group> <!-- notesFlow -->
+      <group name="homeFlow">
+        <method signature="hometest.hime()[pri:0, instance:test.hometest@7c9d8e2]" name="hime" class="test.hometest"/>
+      </group> <!-- homeFlow -->
+      <group name="searchFlow">
+        <method signature="searchtest.first()[pri:0, instance:test.searchtest@70325e14]" name="first" class="test.searchtest"/>
+      </group> <!-- searchFlow -->
+      <group name="postFlow">
+        <method signature="postcreatetest.createPostFlow()[pri:0, instance:test.postcreatetest@7bedc48a]" name="createPostFlow" class="test.postcreatetest"/>
+      </group> <!-- postFlow -->
+      <group name="loginFlow">
+        <method signature="logintest.logintes(java.lang.String,java.lang.String)[pri:0, instance:test.logintest@2002fc1d]" name="logintes" class="test.logintest"/>
+      </group> <!-- loginFlow -->
+      <group name="proFlow">
+        <method signature="profiletest.validateUsername()[pri:0, instance:test.profiletest@37ceb1df]" name="validateUsername" class="test.profiletest"/>
+      </group> <!-- proFlow -->
+      <group name="userFlow">
+        <method signature="useraccTest.checkProfileName()[pri:0, instance:test.useraccTest@4988d8b8]" name="checkProfileName" class="test.useraccTest"/>
+      </group> <!-- userFlow -->
+    </groups>
+    <test started-at="2026-02-24T07:29:06 IST" name="Default test" finished-at="2026-02-24T07:31:41 IST" duration-ms="154717">
+      <class name="test.postcreatetest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:test.postcreatetest@7bedc48a]" started-at="2026-02-24T07:29:01 IST" name="setUp" finished-at="2026-02-24T07:29:06 IST" duration-ms="5027" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.postcreatetest@7bedc48a]" started-at="2026-02-24T07:29:57 IST" name="autoHandlePopups" finished-at="2026-02-24T07:29:57 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="createPostFlow()[pri:0, instance:test.postcreatetest@7bedc48a]" started-at="2026-02-24T07:29:57 IST" name="createPostFlow" depends-on-groups="userFlow" finished-at="2026-02-24T07:30:35 IST" duration-ms="37640" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createPostFlow -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.postcreatetest@7bedc48a]" started-at="2026-02-24T07:31:41 IST" name="tearDown" finished-at="2026-02-24T07:31:42 IST" duration-ms="755" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- test.postcreatetest -->
+      <class name="test.searchtest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.searchtest@70325e14]" started-at="2026-02-24T07:29:10 IST" name="autoHandlePopups" finished-at="2026-02-24T07:29:10 IST" duration-ms="25" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="first()[pri:0, instance:test.searchtest@70325e14]" started-at="2026-02-24T07:29:10 IST" name="first" depends-on-groups="loginFlow" finished-at="2026-02-24T07:29:22 IST" duration-ms="11889" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- first -->
+      </class> <!-- test.searchtest -->
+      <class name="test.profiletest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.profiletest@37ceb1df]" started-at="2026-02-24T07:31:02 IST" name="autoHandlePopups" finished-at="2026-02-24T07:31:02 IST" duration-ms="19" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="validateUsername()[pri:0, instance:test.profiletest@37ceb1df]" started-at="2026-02-24T07:31:02 IST" name="validateUsername" depends-on-groups="exploreFlow" finished-at="2026-02-24T07:31:35 IST" duration-ms="32893" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateUsername -->
+      </class> <!-- test.profiletest -->
+      <class name="test.hometest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.hometest@7c9d8e2]" started-at="2026-02-24T07:30:54 IST" name="autoHandlePopups" finished-at="2026-02-24T07:30:54 IST" duration-ms="20" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="hime()[pri:0, instance:test.hometest@7c9d8e2]" started-at="2026-02-24T07:30:54 IST" name="hime" depends-on-groups="notesFlow" finished-at="2026-02-24T07:30:57 IST" duration-ms="3212" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- hime -->
+      </class> <!-- test.hometest -->
+      <class name="test.exploretest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.exploretest@20d525]" started-at="2026-02-24T07:30:57 IST" name="autoHandlePopups" finished-at="2026-02-24T07:30:57 IST" duration-ms="17" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="explo()[pri:0, instance:test.exploretest@20d525]" started-at="2026-02-24T07:30:57 IST" name="explo" depends-on-groups="homeFlow" finished-at="2026-02-24T07:31:02 IST" duration-ms="4469" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- explo -->
+      </class> <!-- test.exploretest -->
+      <class name="test.settingstest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.settingstest@6200f9cb]" started-at="2026-02-24T07:31:35 IST" name="autoHandlePopups" finished-at="2026-02-24T07:31:35 IST" duration-ms="125" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="set()[pri:0, instance:test.settingstest@6200f9cb]" started-at="2026-02-24T07:31:35 IST" name="set" depends-on-groups="proFlow" finished-at="2026-02-24T07:31:41 IST" duration-ms="6197" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- set -->
+      </class> <!-- test.settingstest -->
+      <class name="test.notesaddingtest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.notesaddingtest@69453e37]" started-at="2026-02-24T07:30:35 IST" name="autoHandlePopups" finished-at="2026-02-24T07:30:35 IST" duration-ms="45" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="notesadd()[pri:0, instance:test.notesaddingtest@69453e37]" started-at="2026-02-24T07:30:35 IST" name="notesadd" depends-on-groups="postFlow" finished-at="2026-02-24T07:30:54 IST" duration-ms="19057" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- notesadd -->
+      </class> <!-- test.notesaddingtest -->
+      <class name="test.useraccTest">
+        <test-method is-config="true" signature="setupPage()[pri:0, instance:test.useraccTest@4988d8b8]" started-at="2026-02-24T07:29:22 IST" name="setupPage" finished-at="2026-02-24T07:29:22 IST" duration-ms="5" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupPage -->
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.useraccTest@4988d8b8]" started-at="2026-02-24T07:29:22 IST" name="autoHandlePopups" finished-at="2026-02-24T07:29:22 IST" duration-ms="55" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="checkProfileName()[pri:0, instance:test.useraccTest@4988d8b8]" started-at="2026-02-24T07:29:22 IST" name="checkProfileName" depends-on-groups="searchFlow" finished-at="2026-02-24T07:29:57 IST" duration-ms="35007" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkProfileName -->
+      </class> <!-- test.useraccTest -->
+      <class name="test.logintest">
+        <test-method is-config="true" signature="autoHandlePopups()[pri:0, instance:test.logintest@2002fc1d]" started-at="2026-02-24T07:29:09 IST" name="autoHandlePopups" finished-at="2026-02-24T07:29:09 IST" duration-ms="39" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- autoHandlePopups -->
+        <test-method signature="logintes(java.lang.String,java.lang.String)[pri:0, instance:test.logintest@2002fc1d]" started-at="2026-02-24T07:29:09 IST" name="logintes" data-provider="login" finished-at="2026-02-24T07:29:10 IST" duration-ms="1239" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[priyadharshinimanikandan3_12]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[priya@1234567890]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logintes -->
+      </class> <!-- test.logintest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

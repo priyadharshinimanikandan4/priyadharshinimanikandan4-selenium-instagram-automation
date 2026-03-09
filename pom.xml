@@ -4,15 +4,12 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.selenium</groupId>
     <artifactId>selenium-maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>selenium-maven</name>
 
-    <!-- Java version -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -20,42 +17,31 @@
     </properties>
 
     <dependencies>
-        <!-- Selenium -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.27.0</version>
         </dependency>
-
-        <!-- TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.9.0</version>
         </dependency>
-
-        <!-- ExtentReports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.1.2</version>
         </dependency>
-
-        <!-- Apache POI Core -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>5.2.5</version>
         </dependency>
-
-        <!-- Apache POI XLSX -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.5</version>
         </dependency>
-
-        <!-- Rest Assured -->
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -65,7 +51,6 @@
 
     <build>
         <plugins>
-            <!-- Compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -76,7 +61,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire plugin for TestNG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -85,7 +69,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!-- Optional: show reports in Jenkins -->
                     <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                 </configuration>
             </plugin>

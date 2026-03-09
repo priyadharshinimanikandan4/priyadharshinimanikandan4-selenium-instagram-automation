@@ -16,8 +16,7 @@ public class App
     {
     	Object[][] f = null;
     	try {
-    		FileInputStream fis = new FileInputStream("./testdata/"+ Location +".xlsx");
-    		Workbook w = new XSSFWorkbook(fis);
+    		FileInputStream fis = new FileInputStream("src/test/resources/testdata/" + Location + ".xlsx");   		Workbook w = new XSSFWorkbook(fis);
     		Sheet s = w.getSheetAt(0);
     		int r = s.getPhysicalNumberOfRows();
     		int c = s.getRow(0).getPhysicalNumberOfCells();
